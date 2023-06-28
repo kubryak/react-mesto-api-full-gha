@@ -1,0 +1,12 @@
+.popup__figure {
+  position: relative;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 580px) {
+  .popup__figure {
+    min-width: 240px;
+  }
+}
+
+

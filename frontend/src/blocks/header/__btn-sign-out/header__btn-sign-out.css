@@ -1,0 +1,16 @@
+.header__btn-sign-out {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: #a9a9a9;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  line-height: 22px;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.header__btn-sign-out:hover {
+  opacity: .6;
+}

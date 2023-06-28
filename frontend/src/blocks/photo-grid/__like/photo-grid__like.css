@@ -1,0 +1,8 @@
+.photo-grid__like {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}

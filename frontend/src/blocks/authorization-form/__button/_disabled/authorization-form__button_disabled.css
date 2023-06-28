@@ -1,0 +1,10 @@
+.authorization-form__button_disabled {
+  background-color: black;
+  border: 1px solid gray;
+  color: gray;
+  cursor: default;
+}
+
+.authorization-form__button_disabled:hover {
+  opacity: 1;
+}
