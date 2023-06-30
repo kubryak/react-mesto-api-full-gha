@@ -6,7 +6,7 @@ const { login, createUser } = require('../controllers/users');
 const NotFoundError = require('../errors/NotFoundError');
 const celebrates = require('../middlewares/celebrate');
 
-app.get('/crash-test', () => {
+router.get('/crash-test', () => {
   setTimeout(() => {
     throw new Error('Сервер сейчас упадёт');
   }, 0);
