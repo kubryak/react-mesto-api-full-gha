@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.155.17
+IP 84.201.155.17
 
 Frontend https://qbrk.nomoreparties.sbs
 
