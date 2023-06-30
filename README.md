@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/kubryak/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 84.201.155.17
 
-Frontend https://...
+Frontend https://qbrk.nomoreparties.sbs
 
-Backend https://...
+Backend https://api.qqbrk.nomoreparties.sbs
