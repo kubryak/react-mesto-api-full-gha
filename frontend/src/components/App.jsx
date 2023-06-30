@@ -55,7 +55,7 @@ export default function App() {
       .catch(err => console.log(err));
     api.getCards()
       .then((res) => {
-        setCards(res.reverse);
+        setCards(res.reverse());
       })
       .catch(err => console.log(err));
 
