@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'https://api.qqbrk.nomoreparties.sbs';
 
 function checkApi(res) {
   if (res.ok) {
@@ -22,6 +22,7 @@ export const register = (email, password) => {
 export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
+    credentials: 'include',
     headers: {
       "Content-Type": "application/json"
     },
@@ -29,21 +30,18 @@ export const authorize = (email, password) => {
   })
     .then(res => checkApi(res))
     .then((data) => {
-      if (data.token) {
-        const token = data.token;
-        localStorage.setItem('token', token);
-        return token;
-      }
+        localStorage.setItem('userId', data._id);
+        return data;
     })
 }
 
 export const checkToken = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
+    credentials: 'include',
     headers: {
       'Accept': 'application/json',
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${token}`
     }
   })
     .then(res => checkApi(res))

@@ -46,7 +46,7 @@ export default function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('userId');
     if (jwt) setToken(jwt)
     api.getUserInfo()
       .then((res) => {
@@ -59,7 +59,7 @@ export default function App() {
       })
       .catch(err => console.log(err));
 
-  }, [])
+  }, [isLoggedIn])
 
   useEffect(() => {
     const close = (e) => {
@@ -102,7 +102,8 @@ export default function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    console.log(card.likes)
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     api.changeLikeCardStatus(card._id, isLiked)
       .then((newCard) => {
@@ -175,7 +176,7 @@ export default function App() {
   function loginUser({ email, password }) {
     auth.authorize(email, password)
       .then((token) => {
-        localStorage.setItem('token', token);
+        localStorage.setItem('userId', token._id);
         setToken(token);
       })
       .catch(err => console.log(err));
@@ -184,7 +185,7 @@ export default function App() {
   function registerUser({ email, password }) {
     auth.register(email, password)
       .then((res) => {
-        if (res.data) {
+        if (res) {
           setRegister({
             status: true,
             message: 'Вы успешно зарегистрировались!'
@@ -202,7 +203,7 @@ export default function App() {
   }
 
   function signOut() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('userId');
     setLoggedIn(false);
     setEmail('');
     navigate('/sign-in', { replace: true });
@@ -213,11 +214,11 @@ export default function App() {
   }, [token])
 
   const handleTokenCheck = () => {
-    const jwt = localStorage.getItem('token');
+    const jwt = localStorage.getItem('userId');
     if (jwt) {
       auth.checkToken(jwt)
-        .then((res) => {
-          setEmail(res.data.email)
+        .then((data) => {
+          setEmail(data.email)
           setLoggedIn(true);
           navigate('/', { replace: true })
         })
