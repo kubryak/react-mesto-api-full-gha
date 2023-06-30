@@ -18,7 +18,8 @@ app.use(cors({
       'http://localhost:3001',
       'http://qbrk.nomoreparties.sbs',
       'https://qbrk.nomoreparties.sbs',
-    ], credentials: true
+    ],
+  credentials: true,
 }));
 
 mongoose.connect(DB_URL);
