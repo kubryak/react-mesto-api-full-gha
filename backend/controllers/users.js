@@ -106,7 +106,7 @@ const login = (req, res, next) => {
               httpOnly: true,
               sameSite: true,
             });
-            res.send(user);
+            res.send({ jwt: jwt });
           } else {
             throw new UnauthorizedError('Неверный логин или пароль');
           }
