@@ -1,5 +1,6 @@
 const jsonWebToken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { ValidationError, CastError } = require('mongoose').Error;
 const User = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -106,7 +107,7 @@ const login = (req, res, next) => {
               httpOnly: true,
               sameSite: true,
             });
-            res.send({ jwt: jwt });
+            res.send({ jwt });
           } else {
             throw new UnauthorizedError('Неверный логин или пароль');
           }
