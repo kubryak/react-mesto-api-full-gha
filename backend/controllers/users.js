@@ -22,7 +22,7 @@ const getUserById = (req, res, next) => {
     .orFail(new NotFoundError('Пользователь по указанному id не найден'))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'CastError') {
+      if (err instanceof CastError) {
         next(new BadRequestError('Переданы некорректные данные при поиске пользователя по id'));
       } else {
         next(err);
@@ -43,7 +43,7 @@ const createUser = (req, res, next) => {
       });
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err instanceof ValidationError) {
         next(new BadRequestError('Переданы некорректные данные при создании пользователя'));
       } else if (err.code === 11000) {
         next(new ConflictingError('Пользователь с таким email уже существует'));
@@ -63,7 +63,7 @@ const updateUser = (req, res, next) => {
     .orFail(new NotFoundError('Пользователь с указанным id не найден'))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err instanceof ValidationError) {
         next(new BadRequestError('Переданы некорректные данные при обновлении профиля'));
       } else {
         next(err);
@@ -81,7 +81,7 @@ const updateUserAvatar = (req, res, next) => {
     .orFail(new NotFoundError('Пользователь с указанным id не найден'))
     .then((user) => res.send(user))
     .catch((err) => {
-      if (err.name === 'ValidationError' || err.name === 'CastError') {
+      if (err instanceof ValidationError) {
         next(new BadRequestError('Переданы некорректные данные при обновлении аватара'));
       } else {
         next(err);

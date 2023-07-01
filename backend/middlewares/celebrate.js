@@ -14,7 +14,14 @@ const validateCardId = celebrate({
   }),
 });
 
-const validateCreateAndLoginUser = celebrate({
+const validateLoginUser = celebrate({
+  body: Joi.object().keys({
+    email: Joi.string().required().email(),
+    password: Joi.string().required(),
+  }),
+});
+
+const validateCreateUser = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
@@ -46,7 +53,8 @@ const validateUserAvatar = celebrate({
 module.exports = {
   validateCreateCard,
   validateCardId,
-  validateCreateAndLoginUser,
+  validateLoginUser,
+  validateCreateUser,
   validateUserId,
   validateUpdateUser,
   validateUserAvatar,

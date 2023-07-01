@@ -12,8 +12,8 @@ router.get('/crash-test', () => {
   }, 0);
 });
 
-router.use('/signin', celebrates.validateCreateAndLoginUser, login);
-router.use('/signup', celebrates.validateCreateAndLoginUser, createUser);
+router.use('/signin', celebrates.validateLoginUser, login);
+router.use('/signup', celebrates.validateCreateUser, createUser);
 router.use(auth);
 router.use('/users', userRoutes);
 router.use('/cards', cardRoutes);

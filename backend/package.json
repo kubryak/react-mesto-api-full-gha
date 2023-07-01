@@ -9,7 +9,7 @@
     "lint": "npx eslint ."
   },
   "keywords": [],
-  "author": "",
+  "author": "kubryak",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.43.0",
